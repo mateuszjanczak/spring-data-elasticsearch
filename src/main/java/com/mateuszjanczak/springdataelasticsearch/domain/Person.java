@@ -3,12 +3,16 @@ package com.mateuszjanczak.springdataelasticsearch.domain;
 import lombok.Builder;
 import lombok.Data;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.elasticsearch.annotations.Document;
+
+import java.io.Serializable;
 
 @Data
 @Builder
-public class Person {
+@Document(indexName = "index")
+public class Person implements Serializable {
     @Id
     String id;
-    String firstname;
-    String lastname;
+    String firstName;
+    String lastName;
 }

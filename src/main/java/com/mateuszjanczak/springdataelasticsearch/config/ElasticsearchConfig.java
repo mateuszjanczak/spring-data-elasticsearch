@@ -1,12 +1,13 @@
 package com.mateuszjanczak.springdataelasticsearch.config;
 
-import com.google.gson.Gson;
 import org.apache.http.HttpHost;
 import org.elasticsearch.client.RestClient;
 import org.elasticsearch.client.RestHighLevelClient;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.data.elasticsearch.core.ElasticsearchOperations;
+import org.springframework.data.elasticsearch.core.ElasticsearchRestTemplate;
 
 @Configuration
 public class ElasticsearchConfig {
@@ -26,7 +27,7 @@ public class ElasticsearchConfig {
     }
 
     @Bean
-    public Gson getGson(){
-        return new Gson();
+    public ElasticsearchOperations elasticsearchTemplate() {
+        return new ElasticsearchRestTemplate(getRestClient());
     }
 }
