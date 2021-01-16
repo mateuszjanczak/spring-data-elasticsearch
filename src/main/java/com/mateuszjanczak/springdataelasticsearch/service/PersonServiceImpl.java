@@ -31,6 +31,16 @@ public class PersonServiceImpl implements PersonService {
     }
 
     @Override
+    public Person update(String id, Person person) {
+        Optional<Person> persistedPerson = personRepository.findById(id);
+        if(persistedPerson.isPresent()) {
+            personRepository.deleteById(id);
+            return personRepository.save(person);
+        }
+        return null;
+    }
+
+    @Override
     public void delete(String id) {
         personRepository.deleteById(id);
     }

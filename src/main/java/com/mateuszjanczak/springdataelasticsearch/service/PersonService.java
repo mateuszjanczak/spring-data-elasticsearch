@@ -8,5 +8,6 @@ public interface PersonService {
     Iterable<Person> getAll();
     Optional<Person> findOne(String id);
     Person create(Person person);
+    Person update(String id, Person person);
     void delete(String id);
 }
